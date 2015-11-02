@@ -7,9 +7,9 @@ To use it you need to put exes folder in same directory as main jar file.
 example:<br>
 
 public static void main(String[] args) {<br>
-        &emsp;Notification not = new Notification("GroupName", "Image, mainClass.class);<br>
-        not.setLineFirst("1");<br>
-        not.setLineSecond("2");<br>
-        not.setLineThird("3");<br>
-        not.show();<br>
-    }
+&emsp;&emsp;Notification not = new Notification("GroupName", "Image, mainClass.class);<br>
+&emsp;&emsp;not.setLineFirst("1");<br>
+&emsp;&emsp;not.setLineSecond("2");<br>
+&emsp;&emsp;not.setLineThird("3");<br>
+&emsp;&emsp;not.show();<br>
+&emsp;}
