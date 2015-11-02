@@ -1,7 +1,9 @@
 package com.axandar;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 
 /**
  * Created by Axandar on 01.11.2015.
@@ -36,7 +38,11 @@ public class Notification {
 
     public void show(){
         try {
-            exeLocation = (mainClass.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "notification.exe").substring(1);
+            URL fileUrl = mainClass.getProtectionDomain().getCodeSource().getLocation();
+            File file = new File(fileUrl.toURI());
+            String grandParent = file.getParentFile().toString();
+            exeLocation = (grandParent + "\\notification.exe");
+            //exeLocation = (mainClass.getProtectionDomain().getCodeSource().getLocation().toURI().getPath() + "notification.exe").substring(1);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -44,7 +50,7 @@ public class Notification {
                 "\"" + lineFirst + "\"" + " " + "\"" + lineSecond + "\"" + " " + "\"" + lineThird + "\"";
         ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", command);
         builder.redirectErrorStream(true);
-
+        System.out.println(command);
         try{
             builder.start();
         } catch (IOException e) {
